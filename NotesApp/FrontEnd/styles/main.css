@@ -10,10 +10,10 @@ header {
     text-align: center;
 }
 
-.modal {
+.modal-background {
     display: none;
     position: fixed;
-    background: black;
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
     margin: 0;
     padding: 0;
@@ -23,12 +23,27 @@ header {
     height: 100%;
 }
 
-.modal input[type="text"], textarea {
+.modal-content {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 1em;
+    background: white;
+    border: 1px solid white;
+    border-radius: 0.15em;
+}
+
+.modal-content input[type="text"], textarea {
     width: 100%;
     border: 1px solid black;
     border-radius: 0.15rem;
     margin: 0 0 2em 0;
     padding: 0;
+}
+
+.modal-footer {
+
 }
 
 textarea {
@@ -72,7 +87,7 @@ textarea {
     text-align: right;
 }
 
-footer {
+.main-footer {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -81,8 +96,9 @@ footer {
     background-color: rgba(200, 200, 200, 0.8);
 }
 
-footer button {
-    margin-top: 10px;
+.main-footer button {
+    margin-top: 8px;
+    font-size: 1em;
 }
 
 footer button:first-child {

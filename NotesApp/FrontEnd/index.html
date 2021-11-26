@@ -9,6 +9,20 @@
 </head>
 
 <body>
+    <section id="userInputs" class="modal-background">
+        <div class="modal-content">
+            <label for="username">Username:</label>
+            <input type="text" id="username">
+            
+            <label for="notecontents">Note:</label>
+            <textarea id="notecontents">Enter your note here.</textarea>
+            <footer class="modal-footer">
+                <button id="modalCloseButton">Close</button>
+                <button id="modalWriteButton">Write</button>
+            </footer>
+        </div>
+    </section>
+    
     <header>
         <h2>Notelus Maxiumus</h2>
         <hr>
@@ -17,15 +31,6 @@
         <h5>Add a new note using the "create" button.</h5>
         <hr>
     </header>
-
-    
-    <section id="userInputs" class="modal">
-        <!-- <label for="username">Username:</label>
-        <input type="text" id="username">
-        
-        <label for="notecontents">Note:</label>
-        <textarea id="notecontents">Enter your note here.</textarea> -->
-    </section>
 
     <main id="notesList" class="flex-container">
         <!-- <p>No notes yet. Add a new note with the "create" button!</p> -->
@@ -173,7 +178,7 @@
         </div>
     </main>
 
-    <footer>
+    <footer class="main-footer">
         <button id="deleteButton">Delete</button>
         <button id="createButton">Create</button>
     </footer>
