@@ -10,41 +10,172 @@
 
 <body>
     <header>
-        <h2>Notes</h2>
+        <h2>Notelus Maxiumus</h2>
+        <hr>
+        <h5>Click a note to edit.</h5>
+        <h5>Check a note's box to select it for deletion. Confirm with the "delete" button.</h5>
+        <h5>Add a new note using the "create" button.</h5>
+        <hr>
     </header>
 
-    <main id="userNotes">
-        <div id="notesList" class="flex-container">
-            <div class="flex-item">
-                <input type="checkbox">
-                <div class="flex-content">
-                    <p>Hi I'm some text</p>
-                    <p class="flex-footer">
-                        jifishma
-                    </p>
-                </div>
+    
+    <section id="userInputs" class="modal">
+        <!-- <label for="username">Username:</label>
+        <input type="text" id="username">
+        
+        <label for="notecontents">Note:</label>
+        <textarea id="notecontents">Enter your note here.</textarea> -->
+    </section>
+
+    <main id="notesList" class="flex-container">
+        <!-- <p>No notes yet. Add a new note with the "create" button!</p> -->
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
             </div>
-            <div class="flex-item">
-                <input type="checkbox">
-                <div class="flex-content">
-                    <p>&nbsp;</p>
-                    <p class="flex-footer">Jfishma</p>
-                </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">Hi I'm some text that's kinda long...</p>
+                <p class="flex-footer">
+                    jifishma
+                </p>
+            </div>
+        </div>
+        <div class="flex-item">
+            <input type="checkbox">
+            <div>
+                <p class="flex-content">&nbsp;</p>
+                <p class="flex-footer">Jfishma</p>
             </div>
         </div>
     </main>
 
-    <section id="userInputs" class="modal">
-        <label for="username">Username:</label>
-        <input type="text" id="username">
-        
-        <label for="notecontents">Note:</label>
-        <textarea id="notecontents">Enter your note here.</textarea>
-    </section>
-
     <footer>
-        <button>Delete</button>
-        <button>Create</button>
+        <button id="deleteButton">Delete</button>
+        <button id="createButton">Create</button>
     </footer>
 </body>
 </html>
