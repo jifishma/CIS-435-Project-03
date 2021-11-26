@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Testing REST with Node + Express</title>
+    <meta charset="utf-8">
+    <script  type="module" src="scripts/notesClient.js"></script>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+
+<body>
+    <header>
+        <h2>Notes</h2>
+    </header>
+
+    <main id="userNotes">
+        <div id="notesList" class="flex-container">
+            <div class="flex-item">
+                <input id="1" type="checkbox">
+                <label for="1">Hi 1</label>
+            </div>
+            <div class="flex-item">
+                <input id="2" type="checkbox">
+                <label for="2">Hi 2</label>
+            </div>
+        </div>
+    </main>
+
+    <section id="userInputs" class="modal">
+        <label for="username">Username:</label>
+        <input type="text" id="username">
+        
+        <label for="notecontents">Note:</label>
+        <textarea id="notecontents">Enter your note here.</textarea>
+    </section>
+
+    <footer>
+        <button>Delete</button>
+        <button>Create</button>
+    </footer>
+</body>
+</html>

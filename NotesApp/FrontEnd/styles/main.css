@@ -1,0 +1,37 @@
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    text-align: center;
+}
+
+.modal {
+    display: none;
+    margin: 0 1em;
+}
+
+input[type="text"], textarea {
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 0.15rem;
+    margin: 0 0 2em 0;
+    padding: 0;
+}
+
+textarea {
+    height: 8em;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+}
+  
+.flex-item {
+    background-color: #eee;
+    margin: 0 0 1em 0;
+    padding: 0.15rem;
+    border: 1px solid black;
+    border-radius: 0.15rem;
+}
