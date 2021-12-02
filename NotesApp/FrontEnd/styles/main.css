@@ -3,16 +3,17 @@ html {
 }
 
 body {
-    margin-bottom: 80px;
+    margin-bottom: 60px;
 }
 
 header {
     text-align: center;
 }
 
-.modal-background {
-    display: none;
+.modal {
     position: fixed;
+    pointer-events: none;
+    opacity: 0;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
     margin: 0;
@@ -21,6 +22,14 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
+
+    transition: all 0.2s;
+}
+
+.modal.visible {
+    display: block;
+    pointer-events: all;
+    opacity: 1;
 }
 
 .modal-content {
@@ -34,6 +43,16 @@ header {
     border-radius: 0.15em;
 }
 
+.modal-content > p {
+    display: none;
+    text-align: center;
+    color: darkred;
+}
+
+.modal-content > p.visible {
+    display: block;
+}
+
 .modal-content input[type="text"], textarea {
     width: 100%;
     border: 1px solid black;
@@ -42,12 +61,19 @@ header {
     padding: 0;
 }
 
-.modal-footer {
-
+.modal-content textarea {
+    height: 8em;
+    min-width: 40vh;
 }
 
-textarea {
-    height: 8em;
+#noNotesMessage {
+    display: none;
+    width: 100%;
+    text-align: center;
+}
+
+#noNotesMessage.visible {
+    display: block;
 }
 
 .flex-container {
@@ -55,11 +81,6 @@ textarea {
     align-items: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-}
-
-.flex-container > p:first-child {
-    width: 100%;
-    text-align: center;
 }
 
 .flex-item {
@@ -70,7 +91,6 @@ textarea {
     padding: 0 1rem;
     border: 1px solid black;
     border-radius: 0.15rem;
-    cursor: pointer;
 }
 
 .flex-item input[type="checkbox"] {
@@ -79,6 +99,7 @@ textarea {
 
 .flex-item > div {
     flex: 1;
+    cursor: pointer;
 }
 
 .flex-footer {

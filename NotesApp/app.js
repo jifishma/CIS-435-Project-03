@@ -17,7 +17,10 @@ app.get(`${urlPath}`, (req, res) => {
     const notesList = [];
 
     if (fs.existsSync(storageFolder)) {
-        fs.readdirSync(storageFolder).forEach(relativepath => {
+        fs.readdirSync(storageFolder, {withFileTypes: true})
+        .filter(ent => ent.isFile())
+        .forEach(ent => {
+            const relativepath = ent.name;
             const notename = relativepath.substring(0, relativepath.lastIndexOf('.txt'));
             notesList.push(new Note(notename));
         });

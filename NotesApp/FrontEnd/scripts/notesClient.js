@@ -1,6 +1,12 @@
-"use strict";
+'use strict';
 
-import Note from "./proxy_modules/noteProxy.js";
+import Note from './proxy_modules/noteProxy.js';
+
+let usernameField;
+let noteContentsField;
+let noteSubmitWarning;
+let notesFlexgrid;
+let noteEditor;
 
 const apiBase = 'notes';
 const serviceUrl = `http://localhost:3000/${apiBase}`;
@@ -45,7 +51,7 @@ NotesAPI.writeNote = (notename, notecontents) => {
         .then(response => response.json());
 }
 
-NotesAPI.deleteNote = (noteslist) => {
+NotesAPI.deleteNotes = (noteslist) => {
     const notesList = { 'notes': [] };
 
     noteslist?.forEach(notename => {
@@ -64,21 +70,128 @@ NotesAPI.deleteNote = (noteslist) => {
         .then(response => response.json());
 }
 
-// function listAllNotes() {
-//     getAllNotes().then(data => {   
-//         const list = document.createElement("ul");
+function createNoteItem(name, contents) {
+    // console.log(name + ', ' + contents);
 
-//         data.notes.forEach(note => {
-//             const item = document.createElement("li");
-//             item.textContent = note.name;
-//             list.appendChild(item);
-//         });
+    const item = document.createElement('div');
+    item.classList.add('flex-item')
 
-//         outputSpan.innerHTML = list.outerHTML;
-//     });
-// }
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = name;
+
+    const contentOrganizer = document.createElement('div');
+    contentOrganizer.onclick = () => showNoteEditor(name, contents);
+    
+    const noteContent = document.createElement('p');
+    noteContent.classList.add('flex-content');
+    
+    let text = contents;
+    if (text && text.length > 80) {
+        text = text.substring(0, 79) + '...';
+    }
+    noteContent.textContent = text ?? '\u00A0';
+
+    const noteAuthor = document.createElement('p');
+    noteAuthor.classList.add('flex-footer');
+    noteAuthor.textContent = name ?? '\u00A0';
+
+    contentOrganizer.appendChild(noteContent);
+    contentOrganizer.appendChild(noteAuthor);
+    item.appendChild(checkbox);
+    item.appendChild(contentOrganizer);
+
+    return item;
+}
+
+function listAllNotes() {
+    NotesAPI.getAllNotes().then(data => {  
+        notesFlexgrid.innerHTML = '';
+        
+        if (!data.notes.length) {
+            noNotesMessage.classList.add('visible');
+            return;
+        }
+
+        noNotesMessage.classList.remove('visible');
+
+        data.notes.forEach(n => {
+            NotesAPI.getNote(n.name).then(note => {
+                const noteItem = createNoteItem(note.name, note.contents);
+                notesFlexgrid.appendChild(noteItem);
+            });
+        });
+    });
+}
+
+function showNoteEditor(noteName, noteContents) { 
+    // console.log(noteName, noteContents);
+
+    usernameField.focus();
+    if (!noteName) {
+        usernameField.value = '';
+        noteContentsField.value = '';
+    } else {
+        usernameField.value = noteName;
+        noteContentsField.value = noteContents;
+    }
+
+    noteEditor.classList.add('visible');
+}
+
+function hideNoteEditor() {
+    noteEditor.classList.remove('visible');
+}
+
+function deleteSelectedNotes() {
+    const checkedNotes = notesFlexgrid.querySelectorAll('input[type="checkbox"]:checked');
+    const notesToDelete = []
+    
+    checkedNotes.forEach(note => {
+        notesToDelete.push(note.id);
+    })
+
+    console.log(notesToDelete);
+    NotesAPI.deleteNotes(notesToDelete);
+    listAllNotes();
+}
+
+function writeNote() {
+    if (!noteContentsField.checkValidity() || !usernameField.checkValidity()) {
+        noteSubmitWarning.classList.add('visible');
+        return;
+    } 
+
+    noteSubmitWarning.classList.remove('visible');
+
+    const username = usernameField.value;
+    const noteContent = noteContentsField.value;
+
+    NotesAPI.writeNote(username, noteContent);
+
+    listAllNotes();
+    hideNoteEditor();
+}
 
 window.onload = () => {
-    NotesAPI.getAllNotes().then(data => {console.log(data)});
-    console.log("Notes app loaded.")
+    usernameField = document.querySelector('#username');
+    noteContentsField = document.querySelector('#notecontents');
+    noteSubmitWarning = document.querySelector('#noteSubmitWarning');
+    notesFlexgrid = document.querySelector("#notesList");
+    noteEditor = document.querySelector('#noteEditor');
+
+    const createButton = document.querySelector('#createButton');
+    createButton.onclick = () => showNoteEditor(null);
+
+    const deleteButton = document.querySelector('#deleteButton');
+    deleteButton.onclick = deleteSelectedNotes;
+    
+    const closeButton = document.querySelector('#modalCloseButton');
+    closeButton.onclick = hideNoteEditor;
+    
+    const writeButton = document.querySelector('#modalWriteButton');
+    writeButton.onclick = writeNote;
+    
+    listAllNotes();
+    console.log('Notes app loaded.')
 };
